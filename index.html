@@ -32,9 +32,9 @@
                      * populate the rows with the code and name of each listing
                      * include a way to remove individual listings
                -->
-              <tr ng-repeat="listing in listings | filter: globalSearch">
-                <td ng-click="showDetails(listing); setListing(listing)">{{listing.code}}</td>
-                <td ng-click="showDetails(listing); setListing(listing)">{{listing.name}}</td>
+              <tr ng-repeat="listing in listings | filter: globalSearch" ng-click="showDetails(listing);">
+                <td>{{listing.code}}</td>
+                <td>{{listing.name}}</td>
                 <td class="btn" type="button" ng-click="deleteListing(listing)">Remove</td>
               </tr>
             </table>
@@ -69,7 +69,13 @@
               Include a way to display detailed information about an individual listing:
                    * consider how to use ng-click within the the table to implement this feature
              -->
-            <p ng-bind-html="detailedInfo"></p>
+            <p>
+              <!-- ng-show for these or css property visibility or html style attribute -->
+              <b>Code: </b>{{detailedInfo.code}}<br></br>
+              <b>Name: </b>{{detailedInfo.name}}<br></br>
+              <b>Coordinates: </b> Latitude: {{detailedInfo.coordinates.latitude}}<br></br> Longitude: {{detailedInfo.coordinates.longitude}} <br></br>
+              <b>Address: </b>{{detailedInfo.address}}<br></br>
+            </p>
           </div>
         </div>
       </div>

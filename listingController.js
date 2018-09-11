@@ -11,6 +11,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
      $scope.setListing = function (selectedListing) {
        $scope.selectedListing = selectedListing;
      }
+
     $scope.visible = false;
 
     $scope.addListing = function() {
@@ -36,13 +37,20 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     };
 
     $scope.showDetails = function(item) {
-      // detailedInfo = "Code: "+ item.code "<br></br>" +
-      // "Name: " item.name + "<br></br>" +
-      // "Latitude: " + item.latitude + "<br></br>" +
-      // "Longitude: " + item.longitude + "<br></br>" +
-      // "Address: " + item.address + "<br></br>";
-      console.log(detailedInfo);
+      $scope.detailedInfo = item;
+      if (item.code != null) {
+        $scope.detailedInfo.code = item.code;
+      }
+      if (item.name != null) {
+        $scope.detailedInfo.name = item.name;
+      }
+      if (item.coordinates != null) {
+        $scope.detailedInfo.coordinates.latitude = item.coordinates.latitude;
+        $scope.detailedInfo.coordinates.longitude = item.coordinates.longitude;
+      }
+      if (item.address != null) {
+        $scope.detailedInfo.address = item.address;
+      }
     };
-
   }
 ]);
